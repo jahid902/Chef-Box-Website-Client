@@ -101,7 +101,7 @@ const Home = () => {
       {/* end of third section */}
 
       <section className="my-4 md:my-8">
-        <h1 className="text-center text-3xl font-bold my-4 md:my-8">
+        <h1 className="text-center text-4xl font-bold my-4 md:my-8">
           Some of the best chefs in 2022
         </h1>
         <div className="w-full md:w-1/2 flex mx-0  md:mx-auto">         
@@ -110,6 +110,7 @@ const Home = () => {
           src="https://www.chefspencil.com/wp-content/uploads/Most-Famous-Chefs-in-2022-960x1707.jpg" alt="" />
         </div>
       </section>
+      {/* end of fourth section */}
     </div>
   );
 };
