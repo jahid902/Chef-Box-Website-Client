@@ -84,6 +84,15 @@ const RegisterPage = () => {
               <button className="btn btn-common">Register</button>
             </div>
           </form>
+          <div className="flex gap-2 justify-center items-center border-2 border-yellow-600 p-1 cursor-pointer">
+            <p>Sign in with google </p>
+            <img src="../../public/google.png" className="w-6 h-6" alt="" />
+          </div>         
+          <p className="mx-auto">or</p>
+          <div className="flex gap-2 justify-center items-center border-2 border-black p-1 cursor-pointer mb-3">
+            <p>Sign in with Github </p>
+            <img src="../../public/github.png" className="w-6 h-6" alt="" />
+          </div> 
         </div>
       </div>
     </div>
