@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ChefData = ({ singleData }) => {
   console.log(singleData);
-  const { id, description, name, numRecipes, likes, experience, picture } =
+  const { id, name, numRecipes, likes, experience, picture } =
     singleData;
   return (
     <div className="card lg:card-side  shadow-xl bg-yellow-100 p-0 md:p-4">
