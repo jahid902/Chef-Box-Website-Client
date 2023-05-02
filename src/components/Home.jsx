@@ -1,6 +1,12 @@
 import React from "react";
+import { useLoaderData } from "react-router-dom";
+import ChefData from "./ChefData";
 
 const Home = () => {
+
+    const chefsData = useLoaderData();
+    
+
   return (
     <div className="px-2 py-1 md:px-4 md:py-4 font-serif">
       <section className="flex flex-col-reverse md:grid grid-cols-2 gap-3 md:p-8">
@@ -8,7 +14,8 @@ const Home = () => {
           <h1 className="font-bold text-4xl">
             The importance
             <br />
-            of a great<br />
+            of a great
+            <br />
             <span className="text-yellow-600 mt-2">Chef</span>
           </h1>
           <p>
@@ -31,17 +38,21 @@ const Home = () => {
       {/* hero section / banner section */}
 
       <section className="my-4 md:my-8">
-        <div className="text-center">
-            <h1 className="text-2xl font-bold">
-                Some world renown chefs.
-            </h1>
-            <p className="font-medium mt-2">Over the years we have seen so many chefs with so much talent. They have shine
-                out whole over the world. Their talent of cooking have won so many hearts and
-                inspired a lot of people all over the world. Here are some of the chef's list
-                below                
-            </p>
+        <div className="text-center my-4 md:my-8">
+          <h1 className="text-2xl font-bold">Some world renown chefs.</h1>
+          <p className="font-medium mt-2">
+            Over the years we have seen so many chefs with so much talent. They
+            have shine out whole over the world. Their talent of cooking have
+            won so many hearts and inspired a lot of people all over the world.
+            Here are some of the chef's list below
+          </p>
         </div>
-        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6">
+          {            
+              chefsData.map(Data=> <ChefData singleData={Data} key={Data.id}>               
+              </ChefData>)         
+          }
+        </div>
       </section>
     </div>
   );
