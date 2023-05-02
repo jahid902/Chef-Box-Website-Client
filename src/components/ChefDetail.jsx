@@ -17,7 +17,7 @@ const ChefDetail = () => {
   } = details;
   return (
     <div className="px-2 py-1 md:px-4 md:py-4 font-serif">
-      <div className="flex flex-col md:flex-row gap-4 bg-yellow-100 p-2">
+      <div className="flex flex-col md:flex-row gap-4 bg-amber-100 rounded-md p-2">
         <div className="w-1/2 mx-auto">
           <img
             className="w-full h-96 object-cover md:object-contain "

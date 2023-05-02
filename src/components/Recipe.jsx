@@ -17,7 +17,7 @@ const Recipe = ({ data }) => {
     } 
 
   return (    
-      <div className="card w-full  shadow-xl bg-yellow-100">
+      <div className="card w-full  shadow-xl bg-amber-100">
         <div className="card-body">
           <h2 className="card-title"><strong>Recipe name</strong>: {name}</h2>
           <ol>
