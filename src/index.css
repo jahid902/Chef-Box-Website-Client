@@ -4,11 +4,11 @@
 
 .navbar-container{
     @apply flex flex-col md:flex-row justify-between px-3 md:px-6 pt-4 md:pt-4 
-    bg-gradient-to-r from-yellow-200  to-yellow-200 pb-2 space-y-4 md:space-y-0
+    bg-gradient-to-r from-yellow-200 via-yellow-100 to-amber-200 pb-2 space-y-4 md:space-y-0
   }
   
   .btn-common{
-    @apply px-4 py-3 text-black font-semibold bg-gradient-to-r from-yellow-300 to-red-300 rounded-lg
+    @apply px-4 py-3 text-black font-semibold bg-gradient-to-r from-yellow-300 to-amber-200 rounded-lg
   }
   
   .active{

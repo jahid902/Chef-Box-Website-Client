@@ -9,6 +9,7 @@ const Home = () => {
 
   return (
     <div className="px-2 py-1 md:px-4 md:py-4 font-serif">
+
       <section className="flex flex-col-reverse md:grid grid-cols-2 gap-3 md:p-8">
         <div className="font-serif space-y-6 text-center md:text-start  md:order-first md:p-6">
           <h1 className="font-bold text-4xl">
@@ -35,7 +36,7 @@ const Home = () => {
           />
         </div>
       </section>
-      {/* hero section / banner section */}
+      {/* end of hero section / banner section */}
 
       <section className="my-4 md:my-8">
         <div className="text-center my-4 md:my-8">
@@ -44,7 +45,7 @@ const Home = () => {
             Over the years we have seen so many chefs with so much talent. They
             have shine out whole over the world. Their talent of cooking have
             won so many hearts and inspired a lot of people all over the world.
-            Here are some of the chef's list below
+            Here are some of the chef's list below.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6">
@@ -54,6 +55,7 @@ const Home = () => {
           }
         </div>
       </section>
+      {/* end chef data show section  */}
     </div>
   );
 };

@@ -24,8 +24,9 @@ const router =  createBrowserRouter([
                 element: <BlogPage></BlogPage>
             },
             {
-                path:"/chefs",
-                element:<ChefDetail></ChefDetail>
+                path:"/chefs/:id",
+                element:<ChefDetail></ChefDetail>,
+                loader:({params}) => fetch(`https://chef-box-server-jahid902.vercel.app/chefs/${params.id}`)
             },
             {
                 path:"/login",
