@@ -30,10 +30,9 @@ const RegisterPage = () => {
         console.log(error.message);
         setError("User not created");
       });
-      setError("")
-      setSuccess("")
-
-    form.reset();
+      form.reset();
+      setError("");
+      setSuccess("");
   };
 
   return (
