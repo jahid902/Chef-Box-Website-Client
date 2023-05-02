@@ -24,7 +24,7 @@ const Footer = () => {
         </div>
 
       </div>
-      <div className="text-center mt-3">©2022 ChefBox Hospitality All Rights Reserved.</div>
+      <div className="text-center mt-3 pb-2">©2022 ChefBox Hospitality All Rights Reserved.</div>
     </div>
   );
 };
