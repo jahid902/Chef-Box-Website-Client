@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.navbar-container{
+    @apply flex flex-col md:flex-row justify-between px-3 md:px-6 pt-4 md:pt-4 
+    bg-gradient-to-r from-yellow-200  to-yellow-200 pb-2 space-y-4 md:space-y-0
+  }
+  
+  .btn-common{
+    @apply px-4 py-3 text-white font-semibold bg-gradient-to-r from-yellow-600 to-red-500 rounded-lg
+  }
+  
+  .active{
+    @apply font-extrabold tracking-wide text-yellow-800 transition-colors duration-200 hover:text-yellow-500
+  }
+  
+  .default{
+    @apply font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-yellow-500
+  }
+  
+ 
