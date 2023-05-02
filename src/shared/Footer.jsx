@@ -17,9 +17,9 @@ const Footer = () => {
         <div className="w-1/2 flex text-center flex-col">
             <h1 className="text-2xl font-bold pb-4">follow us on</h1>
             <div className="flex justify-center gap-4">
-             <img className="w-8 h-8 cursor-pointer" src="../../public/facebook.png" alt="" />
-             <img className="w-8 h-8 cursor-pointer" src="../../public/twitter.png" alt="" />
-             <img className="w-8 h-8 cursor-pointer" src="../../public/instagram.png" alt="" />
+             <img className="w-8 h-8 cursor-pointer" src="/facebook.png" alt="" />
+             <img className="w-8 h-8 cursor-pointer" src="/twitter.png" alt="" />
+             <img className="w-8 h-8 cursor-pointer" src="/instagram.png" alt="" />
             </div>
         </div>
 
