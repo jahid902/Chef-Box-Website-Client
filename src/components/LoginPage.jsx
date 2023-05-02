@@ -1,17 +1,31 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const LoginPage = () => {
 
     const [error, setError] = useState("")
+    const [success, setSuccess] = useState("")
+    const {loginUser} = useContext(AuthContext);
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email,password);
+        loginUser(email, password)
+        .then((result) =>{
+            const user = result.user;
+            setSuccess('successfully logged in')
+            
+        })
+        .catch((error) => {
+            console.log(error.message);
+            setError("login data didn't match")
+        })
         form.reset();
+        setError("");
+        setSuccess("");
     }
 
   return (
@@ -56,6 +70,7 @@ const LoginPage = () => {
               </label>
             </div>
             <p className="text-red-700 text-lg">{error}</p>
+            <p className="text-green-500 text-lg">{success}</p>
             <div className="form-control mt-6">
               <button className="btn btn-common">Login</button>
             </div>
