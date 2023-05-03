@@ -6,7 +6,8 @@ const LoginPage = () => {
 
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
-    const {loginUser} = useContext(AuthContext);
+    const [googleUser, setGoogleUser] =useState(null);
+    const {loginUser, googleLogin, googleLogout} = useContext(AuthContext);
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -26,6 +27,33 @@ const LoginPage = () => {
         form.reset();
         setError("");
         setSuccess("");
+    }
+
+    const handleGoogleLogin = () => {
+      googleLogin()
+      .then(result =>{
+        const user = result.user;
+        setSuccess("Logged in with google")
+        setGoogleUser(user);
+        
+      })
+      .catch(e => {
+        const error = e.message;
+        console.log(error);
+        setError(error);
+      })
+    }
+
+    const googleSignOut = () => {
+      googleLogout()
+      .then(result => {
+        setGoogleUser(null)
+        setSuccess("Signed out from google")
+      })
+      .catch(e =>{
+        console.log(e);
+        setError(e.message);
+      })
     }
 
   return (
@@ -75,10 +103,14 @@ const LoginPage = () => {
               <button className="btn btn-common">Login</button>
             </div>
           </form>
-          <div className="flex gap-2 justify-center items-center border-2 border-yellow-600 p-1 cursor-pointer">
+          {
+            googleUser ? 
+            <button onClick={googleSignOut} className="btn-common">Sign out from Google</button> :
+            <div onClick={handleGoogleLogin} className="flex gap-2 justify-center items-center border-2 border-yellow-600 p-1 cursor-pointer">
             <p>Sign in with google </p>
             <img src="/google.png" className="w-6 h-6" alt="" />
-          </div>         
+          </div> 
+          }        
           <p className="mx-auto">or</p>
           <div className="flex gap-2 justify-center items-center border-2 border-black p-1 cursor-pointer mb-3">
             <p>Sign in with Github </p>

@@ -5,7 +5,8 @@ import { AuthContext } from "../Providers/AuthProvider";
 const RegisterPage = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const { registerUser } = useContext(AuthContext);
+  
+  const { registerUser, googleLogin } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,17 +25,29 @@ const RegisterPage = () => {
     registerUser(email, password)
       .then((result) => {
         console.log(result.user);
-        setSuccess("Successfully created user")
+        setSuccess("Successfully created user");
       })
       .catch((error) => {
         console.log(error.message);
         setError("User not created");
       });
-      form.reset();
-      setError("");
-      setSuccess("");
+    form.reset();
+    setError("");
+    setSuccess("");
   };
 
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        const user = result.user;
+        setSuccess("logged in with google");
+      })
+      .catch((e) => {
+        const error = e.message;
+        setError(error);
+      });
+  };
+  
   return (
     <div className="hero min-h-screen bg-base-200 font-serif">
       <div className="hero-content flex-col">
@@ -106,7 +119,10 @@ const RegisterPage = () => {
               <button className="btn btn-common">Register</button>
             </div>
           </form>
-          <div className="flex gap-2 justify-center items-center border-2 border-yellow-600 p-1 cursor-pointer">
+          <div
+            onClick={handleGoogleLogin}
+            className="flex gap-2 justify-center items-center border-2 border-yellow-600 p-1 cursor-pointer"
+          >
             <p>Sign in with google </p>
             <img src="/google.png" className="w-6 h-6" alt="" />
           </div>
