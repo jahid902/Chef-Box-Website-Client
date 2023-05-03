@@ -9,7 +9,7 @@ const Recipe = ({ data }) => {
     const handleAlert = () =>{
         Swal.fire(
             "Task complete",
-            "Added as favorite recipe",
+            "The recipe is your favorite",
             'success'
           )
           setApply(true)
