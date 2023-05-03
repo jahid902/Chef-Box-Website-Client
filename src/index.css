@@ -10,6 +10,9 @@
   .btn-common{
     @apply px-4 py-3 text-black font-semibold bg-gradient-to-r from-yellow-300 to-amber-200 rounded-lg
   }
+  .btn-common2{
+    @apply px-2 py-2 text-black font-semibold bg-gradient-to-r from-yellow-300 to-amber-400 rounded-lg
+  }
   
   .active{
     @apply font-extrabold tracking-wide text-yellow-800 transition-colors duration-200 hover:text-yellow-500
