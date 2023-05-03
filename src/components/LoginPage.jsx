@@ -3,89 +3,60 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 
 const LoginPage = () => {
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const { loginUser, googleLogin, githubLogin } = useContext(AuthContext);
 
-    const [error, setError] = useState("")
-    const [success, setSuccess] = useState("")
-    const [googleUser, setGoogleUser] =useState(null);
-    const [githubUser, setGithubUser] = useState(null);
-    const {loginUser, googleLogin, googleLogout, githubLogin, githubLogout} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/login";
 
-    const navigate = useNavigate();
-    const location = useLocation();
-    const from = location.state?.from?.pathname || "/login";
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        loginUser(email, password)
-        .then((result) =>{
-            const user = result.user;
-            setSuccess('successfully logged in')
-            navigate(from, {replace : true});           
-        })
-        .catch((error) => {
-            console.log(error.message);
-            setError("login data didn't match")
-        })
-        form.reset();
-        setError("");
-        setSuccess("");
-    }
-
-    const handleGoogleLogin = () => {
-      googleLogin()
-      .then(result =>{
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    loginUser(email, password)
+      .then((result) => {
         const user = result.user;
-        setSuccess("Logged in with google")
-        setGoogleUser(user);
-        navigate(from, {replace : true});         
+        setSuccess("successfully logged in");
+        navigate(from, { replace: true });
       })
-      .catch(e => {
+      .catch((error) => {
+        console.log(error.message);
+        setError("login data didn't match");
+      });
+    form.reset();
+    setError("");
+    setSuccess("");
+  };
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        const user = result.user;
+        setSuccess("Logged in with google");
+        navigate(from, { replace: true });
+      })
+      .catch((e) => {
         const error = e.message;
         console.log(error);
         setError(error);
-      })
-    }
+      });
+  };
 
-    const handleGithubLogin = () => {
-      githubLogin()
-      .then(result=>{
+  const handleGithubLogin = () => {
+    githubLogin()
+      .then((result) => {
         const user = result.user;
-        setGithubUser(user);
-        setSuccess("Logged in with github")
-        navigate(from, {replace : true});  
+        setSuccess("Logged in with github");
+        navigate(from, { replace: true });
       })
-      .catch(e=>{
+      .catch((e) => {
         console.log(e.message);
         setError(e.message);
-      })
-    }
-
-    const googleSignOut = () => {
-      googleLogout()
-      .then(result => {
-        setGoogleUser(null)
-        setSuccess("Signed out from google")
-      })
-      .catch(e =>{
-        console.log(e);
-        setError(e.message);
-      })
-    }
-
-    const githubSignOut = () => {
-      githubLogout()
-      .then(result=>{
-        setGithubUser(null)
-        setSuccess("Signed out from github")
-      })
-      .catch(e=>{
-        console.log(e.message);
-        setError(e.message);
-      })
-    }
+      });
+  };
 
   return (
     <div className="hero min-h-screen bg-base-200 font-serif">
@@ -134,23 +105,21 @@ const LoginPage = () => {
               <button className="btn btn-common">Login</button>
             </div>
           </form>
-          {
-            googleUser ? 
-            <button onClick={googleSignOut} className="btn-common">Sign out from Google</button> :
-            <div onClick={handleGoogleLogin} className="flex gap-2 justify-center items-center border-2 border-yellow-600 p-1 cursor-pointer">
+          <div
+            onClick={handleGoogleLogin}
+            className="flex gap-2 justify-center items-center border-2 border-yellow-600 p-1 cursor-pointer"
+          >
             <p>Sign in with google </p>
             <img src="/google.png" className="w-6 h-6" alt="" />
-          </div> 
-          }        
+          </div>
           <p className="mx-auto">or</p>
-         {
-          githubUser ? <button className="btn-common" onClick={githubSignOut}>Sign out from Github</button> :
-          <div onClick={handleGithubLogin} className="flex gap-2 justify-center items-center border-2 border-black p-1 cursor-pointer mb-3">
-          <p>Sign in with Github </p>
-          <img src="/github.png" className="w-6 h-6" alt="" />
-        </div> 
-
-         }  
+          <div
+            onClick={handleGithubLogin}
+            className="flex gap-2 justify-center items-center border-2 border-black p-1 cursor-pointer mb-3"
+          >
+            <p>Sign in with Github </p>
+            <img src="/github.png" className="w-6 h-6" alt="" />
+          </div>
         </div>
       </div>
     </div>
