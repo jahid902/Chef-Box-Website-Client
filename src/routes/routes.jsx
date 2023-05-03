@@ -6,38 +6,46 @@ import ChefDetail from "../components/ChefDetail";
 import LoginPage from "../components/LoginPage";
 import RegisterPage from "../components/RegisterPage";
 import BlogPage from "../components/BlogPage";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
-
-const router =  createBrowserRouter([
-    {
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLayout></MainLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
         path: "/",
-        element: <MainLayout></MainLayout>,
-        errorElement: <ErrorPage></ErrorPage>,
-        children:[
-            {
-                path:"/",
-                element: <Home></Home>,
-                loader: ()=> fetch('https://chef-box-server-jahid902.vercel.app/chefs')
-            },
-            {
-                path:"/blog",
-                element: <BlogPage></BlogPage>
-            },
-            {
-                path:"/chefs/:id",
-                element:<ChefDetail></ChefDetail>,
-                loader:({params}) => fetch(`https://chef-box-server-jahid902.vercel.app/chefs/${params.id}`)
-            },
-            {
-                path:"/login",
-                element:<LoginPage></LoginPage>
-            },
-            {
-                path:"/register",
-                element:<RegisterPage></RegisterPage>
-            }
-        ]
-    }
-])
+        element: <Home></Home>,
+        loader: () =>
+          fetch("https://chef-box-server-jahid902.vercel.app/chefs"),
+      },
+      {
+        path: "/blog",
+        element: <BlogPage></BlogPage>,
+      },
+      {
+        path: "/chefs/:id",
+        element: (
+          <PrivateRoute>
+            <ChefDetail></ChefDetail>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://chef-box-server-jahid902.vercel.app/chefs/${params.id}`
+          ),
+      },
+      {
+        path: "/login",
+        element: <LoginPage></LoginPage>,
+      },
+      {
+        path: "/register",
+        element: <RegisterPage></RegisterPage>,
+      },
+    ],
+  },
+]);
 
 export default router;

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 
 const LoginPage = () => {
@@ -10,6 +10,10 @@ const LoginPage = () => {
     const [githubUser, setGithubUser] = useState(null);
     const {loginUser, googleLogin, googleLogout, githubLogin, githubLogout} = useContext(AuthContext);
 
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/login";
+
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -19,7 +23,7 @@ const LoginPage = () => {
         .then((result) =>{
             const user = result.user;
             setSuccess('successfully logged in')
-            
+            navigate(from, {replace : true});           
         })
         .catch((error) => {
             console.log(error.message);
@@ -36,7 +40,7 @@ const LoginPage = () => {
         const user = result.user;
         setSuccess("Logged in with google")
         setGoogleUser(user);
-        
+        navigate(from, {replace : true});         
       })
       .catch(e => {
         const error = e.message;
@@ -51,6 +55,7 @@ const LoginPage = () => {
         const user = result.user;
         setGithubUser(user);
         setSuccess("Logged in with github")
+        navigate(from, {replace : true});  
       })
       .catch(e=>{
         console.log(e.message);
