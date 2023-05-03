@@ -22,7 +22,7 @@ const Recipe = ({ data }) => {
           <ol>
             
             {
-                ingredients.map((data,index) => <li><strong>Ingredients :</strong> {data}</li>)
+                ingredients.map((data,index) => <li key={index}><strong>Ingredients :</strong> {data}</li>)
             }
 
           </ol>

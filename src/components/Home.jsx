@@ -1,12 +1,10 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import ChefData from "./ChefData";
-import LoadingSpinner from "./LoadingSpinner";
 
 const Home = () => {
-  
   const chefsData = useLoaderData();
-  
+
   return (
     <div className="px-2 py-1 md:px-4 md:py-4 font-serif">
       <section className="flex flex-col-reverse md:grid grid-cols-2 gap-3 md:p-8 bg-yellow-100">
@@ -106,10 +104,12 @@ const Home = () => {
         <h1 className="text-center text-4xl font-bold my-4 md:my-8">
           Some of the best chefs in 2022
         </h1>
-        <div className="w-full md:w-1/2 flex mx-0  md:mx-auto">         
-          <img 
-          className="object-cover w-full h-full"
-          src="https://www.chefspencil.com/wp-content/uploads/Most-Famous-Chefs-in-2022-960x1707.jpg" alt="" />
+        <div className="w-full md:w-1/2 flex mx-0  md:mx-auto">
+          <img
+            className="object-cover w-full h-full"
+            src="https://www.chefspencil.com/wp-content/uploads/Most-Famous-Chefs-in-2022-960x1707.jpg"
+            alt=""
+          />
         </div>
       </section>
       {/* end of fourth section */}
