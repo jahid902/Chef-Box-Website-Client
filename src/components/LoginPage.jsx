@@ -7,7 +7,8 @@ const LoginPage = () => {
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
     const [googleUser, setGoogleUser] =useState(null);
-    const {loginUser, googleLogin, googleLogout} = useContext(AuthContext);
+    const [githubUser, setGithubUser] = useState(null);
+    const {loginUser, googleLogin, googleLogout, githubLogin, githubLogout} = useContext(AuthContext);
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -44,6 +45,19 @@ const LoginPage = () => {
       })
     }
 
+    const handleGithubLogin = () => {
+      githubLogin()
+      .then(result=>{
+        const user = result.user;
+        setGithubUser(user);
+        setSuccess("Logged in with github")
+      })
+      .catch(e=>{
+        console.log(e.message);
+        setError(e.message);
+      })
+    }
+
     const googleSignOut = () => {
       googleLogout()
       .then(result => {
@@ -52,6 +66,18 @@ const LoginPage = () => {
       })
       .catch(e =>{
         console.log(e);
+        setError(e.message);
+      })
+    }
+
+    const githubSignOut = () => {
+      githubLogout()
+      .then(result=>{
+        setGithubUser(null)
+        setSuccess("Signed out from github")
+      })
+      .catch(e=>{
+        console.log(e.message);
         setError(e.message);
       })
     }
@@ -112,10 +138,14 @@ const LoginPage = () => {
           </div> 
           }        
           <p className="mx-auto">or</p>
-          <div className="flex gap-2 justify-center items-center border-2 border-black p-1 cursor-pointer mb-3">
-            <p>Sign in with Github </p>
-            <img src="/github.png" className="w-6 h-6" alt="" />
-          </div>   
+         {
+          githubUser ? <button className="btn-common" onClick={githubSignOut}>Sign out from Github</button> :
+          <div onClick={handleGithubLogin} className="flex gap-2 justify-center items-center border-2 border-black p-1 cursor-pointer mb-3">
+          <p>Sign in with Github </p>
+          <img src="/github.png" className="w-6 h-6" alt="" />
+        </div> 
+
+         }  
         </div>
       </div>
     </div>

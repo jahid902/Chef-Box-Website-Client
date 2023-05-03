@@ -6,7 +6,7 @@ const RegisterPage = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   
-  const { registerUser, googleLogin } = useContext(AuthContext);
+  const { registerUser, googleLogin, githubLogin } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,6 +47,18 @@ const RegisterPage = () => {
         setError(error);
       });
   };
+
+  const handleGithubLogin = () => {
+    githubLogin()
+    .then(result =>{
+      const user = result.user;
+      setSuccess("Logged in with github")
+    })
+    .catch(e =>{
+      console.log(e.message);
+      setError(e.message);
+    })
+  }
   
   return (
     <div className="hero min-h-screen bg-base-200 font-serif">
@@ -127,7 +139,7 @@ const RegisterPage = () => {
             <img src="/google.png" className="w-6 h-6" alt="" />
           </div>
           <p className="mx-auto">or</p>
-          <div className="flex gap-2 justify-center items-center border-2 border-black p-1 cursor-pointer mb-3">
+          <div onClick={handleGithubLogin} className="flex gap-2 justify-center items-center border-2 border-black p-1 cursor-pointer mb-3">
             <p>Sign in with Github </p>
             <img src="/github.png" className="w-6 h-6" alt="" />
           </div>
