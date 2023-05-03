@@ -20,9 +20,11 @@ const Recipe = ({ data }) => {
         <div className="card-body">
           <h2 className="card-title"><strong>Recipe name</strong>: {name}</h2>
           <ol>
+            
             {
-                ingredients.map((data) => <li><strong>Ingredients :</strong> {data}</li>)
+                ingredients.map((data,index) => <li><strong>Ingredients :</strong> {data}</li>)
             }
+
           </ol>
           <p><strong>Cooking Mehtod</strong> : {method}</p>
           <p><strong>Rating</strong> : {rating}</p>

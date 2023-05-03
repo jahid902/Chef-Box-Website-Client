@@ -24,7 +24,7 @@ const ChefData = ({ singleData }) => {
         <h2 className="card-title">Name : {name}</h2>
         <p className="flex-grow-0"><strong>Recipes</strong> : {numRecipes}</p>
         <p className="flex-grow-0"><strong>Likes</strong>: {likes}</p>
-        <p className="flex-grow-0"><strong>Years of experience</strong> : {experience}</p>
+        <p className="flex-grow-0"><strong>Years of experience</strong> : {experience} years</p>
         <div className="card-actions justify-start">
           <Link to={`../chefs/${id}`}><button className="btn btn-common ">View chef recipes</button></Link>
         </div>

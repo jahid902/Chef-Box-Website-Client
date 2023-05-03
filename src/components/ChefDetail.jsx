@@ -41,7 +41,7 @@ const ChefDetail = () => {
             <strong>Recipes</strong> : {numRecipes}
           </p>
           <p>
-            <strong>Chef Experience</strong> : {experience}
+            <strong>Chef Experience</strong> : {experience} years 
           </p>
           <p>
             <strong>Chef likes</strong> : {likes}
