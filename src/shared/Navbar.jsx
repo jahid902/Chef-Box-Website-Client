@@ -25,7 +25,7 @@ const Navbar = () => {
           <span className="text-red-800 text-3xl ml-1">Box</span>
           
         </h1>
-        <p> <AcademicCapIcon className="h-8 w-8 text-red-700" /></p>
+        <p><AcademicCapIcon className="h-8 w-8 text-red-700" /></p>
       </div>
 
       <ul className="flex space-x-4 text-lg items-center">
