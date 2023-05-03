@@ -1,9 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigation } from "react-router-dom";
+import LoadingSpinner from "./LoadingSpinner";
 
 const ChefData = ({ singleData }) => {
   const { id, name, numRecipes, likes, experience, picture } =
     singleData;
+
+    const navigation = useNavigation()
+    if(navigation.state === 'loading'){
+     return <LoadingSpinner></LoadingSpinner>
+    }
+
   return (
     <div className="card lg:card-side  shadow-xl bg-yellow-100 p-0 md:p-4">
       <figure className="w-full">

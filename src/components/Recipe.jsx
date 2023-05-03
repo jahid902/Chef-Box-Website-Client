@@ -3,8 +3,7 @@ import Swal from "sweetalert2";
 
 const Recipe = ({ data }) => {
 
-    const [apply, setApply] = useState(false)
-  console.log(data);
+    const [apply, setApply] = useState(false);
   const { ingredients, method, name, rating } = data;
 
     const handleAlert = () =>{
@@ -22,7 +21,7 @@ const Recipe = ({ data }) => {
           <h2 className="card-title"><strong>Recipe name</strong>: {name}</h2>
           <ol>
             {
-                ingredients.map(data => <li><strong>Ingredients :</strong> {data}</li>)
+                ingredients.map((data) => <li><strong>Ingredients :</strong> {data}</li>)
             }
           </ol>
           <p><strong>Cooking Mehtod</strong> : {method}</p>

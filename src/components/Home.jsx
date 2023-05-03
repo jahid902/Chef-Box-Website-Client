@@ -1,10 +1,12 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import ChefData from "./ChefData";
+import LoadingSpinner from "./LoadingSpinner";
 
 const Home = () => {
+  
   const chefsData = useLoaderData();
-
+  
   return (
     <div className="px-2 py-1 md:px-4 md:py-4 font-serif">
       <section className="flex flex-col-reverse md:grid grid-cols-2 gap-3 md:p-8 bg-yellow-100">
